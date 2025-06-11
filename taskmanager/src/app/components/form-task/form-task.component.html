@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <h3>Formulario Tareas</h3>
+    
+    <!-- inicio del formulario-->
+    <form class="form" [formGroup]="form" (ngSubmit)="handleSubmit()">
+        <div class="mb-3">
+            <h5>Nombre</h5>
+            <input 
+                type="text"
+                name="name"
+                formControlName="name">
+                @if(form.controls.name.hasError('required')){
+                    <p style="color: red">Nombre requerido</p>
+                }   
+                @if(form.controls.name.hasError('minlength')){
+                    <p style="color: red">minimo longitud de 2 caracteres</p>
+                }
+                @if(form.controls.name.hasError('maxlength')){
+                    <p style="color: red">maximo longitud de 20 caracteres</p>
+            }
+        </div>
+
+        <div class="mb-3">
+            <h5>Prioridad</h5>
+            <input type="radio" [value]="priorityEnum.LOW" name="priority" formControlName="priority"> Baja
+            <input type="radio" [value]="priorityEnum.MEDIUM" name="priority" formControlName="priority"> Media
+            <input type="radio" [value]="priorityEnum.HIGH" name="priority" formControlName="priority"> Alta
+        </div>
+
+        <div class="mb-3">
+            <h5>Descripción</h5>
+            <textarea 
+                name="description"
+                formControlName="description"></textarea>
+                
+                @if(form.controls.description.hasError('required')){
+                    <p style="color: red">Nombre requerido</p>
+                }   
+                @if(form.controls.description.hasError('minlength')){
+                    <p style="color: red">minimo longitud de 5 caracteres</p>
+                }
+                @if(form.controls.description.hasError('maxlength')){
+                    <p style="color: red">maximo longitud de 120 caracteres</p>
+
+                }
+            
+            
+        </div>
+
+        <button class="btn btn-primary"   type="submit" [disabled]="form.invalid">Guardar</button>
+
+    </form>
+    <!-- final del formulario-->
+</div>
