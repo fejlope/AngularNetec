@@ -41,14 +41,9 @@
                 }
                 @if(form.controls.description.hasError('maxlength')){
                     <p style="color: red">maximo longitud de 120 caracteres</p>
-
                 }
-            
-            
         </div>
-
         <button class="btn btn-primary"   type="submit" [disabled]="form.invalid">Guardar</button>
-
     </form>
     <!-- final del formulario-->
 </div>
